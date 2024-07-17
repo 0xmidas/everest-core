@@ -16,6 +16,7 @@
 // ev@75ac1216-19eb-4182-a85c-820f1fc2c091:v1
 // insert your custom include headers here
 #include "board_support_common.hpp"
+#include "evGpio.h"
 // ev@75ac1216-19eb-4182-a85c-820f1fc2c091:v1
 
 namespace module {
@@ -27,7 +28,7 @@ class evse_board_supportImpl : public evse_board_supportImplBase {
 public:
     evse_board_supportImpl() = delete;
     evse_board_supportImpl(Everest::ModuleAdapter* ev, const Everest::PtrContainer<PhyVersoBSP>& mod, Conf& config) :
-        evse_board_supportImplBase(ev, "connector_1"), mod(mod), config(config){};
+        evse_board_supportImplBase(ev, "connector_1"), mod(mod), config(config) {};
 
     // ev@8ea32d28-373f-4c90-ae5e-b4fcc74e2a61:v1
     // insert your public definitions here
@@ -63,6 +64,7 @@ private:
     std::mutex caps_mutex;
     CpState last_cp_state;
     PpState last_pp_state; ///< The last pp state received from the MCU.
+    bool last_stop_button_state;
     // ev@3370e4dd-95f4-47a9-aaec-ea76f34a66c9:v1
 };
 
