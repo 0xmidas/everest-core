@@ -48,7 +48,28 @@ static iso15118::config::TlsNegotiationStrategy convert_tls_negotiation_strategy
 
 void ISO15118_chargerImpl::init() {
     // setup logging routine
-    iso15118::io::set_logging_callback([](const std::string& msg) { EVLOG_info << msg; });
+    iso15118::io::set_logging_callback([](const iso15118::LogLevel& level, const std::string& msg) {
+        switch (level) {
+        case iso15118::LogLevel::Error:
+            EVLOG_error << msg;
+            break;
+        case iso15118::LogLevel::Warning:
+            EVLOG_warning << msg;
+            break;
+        case iso15118::LogLevel::Info:
+            EVLOG_info << msg;
+            break;
+        case iso15118::LogLevel::Debug:
+            EVLOG_debug << msg;
+            break;
+        case iso15118::LogLevel::Trace:
+            EVLOG_verbose << msg;
+            break;
+        default:
+            EVLOG_critical << "(Loglevel not defined) - " << msg;
+            break;
+        }
+    });
 
     session_logger = std::make_unique<SessionLogger>(mod->config.logging_path);
 
