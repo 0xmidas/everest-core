@@ -28,10 +28,10 @@ struct Conf {
     bool enable_ssl_logging;
 };
 
-class D20Evse : public Everest::ModuleBase {
+class EvseD20 : public Everest::ModuleBase {
 public:
-    D20Evse() = delete;
-    D20Evse(const ModuleInfo& info, Everest::MqttProvider& mqtt_provider,
+    EvseD20() = delete;
+    EvseD20(const ModuleInfo& info, Everest::MqttProvider& mqtt_provider,
             std::unique_ptr<ISO15118_chargerImplBase> p_charger, Conf& config) :
         ModuleBase(info), mqtt(mqtt_provider), p_charger(std::move(p_charger)), config(config){};
 
