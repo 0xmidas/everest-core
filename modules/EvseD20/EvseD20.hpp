@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright Pionix GmbH and Contributors to EVerest
-#ifndef D20EVSE_HPP
-#define D20EVSE_HPP
+#ifndef EVSED20_HPP
+#define EVSED20_HPP
 
 //
 // AUTO GENERATED - MARKED REGIONS WILL BE KEPT
@@ -64,4 +64,4 @@ private:
 
 } // namespace module
 
-#endif // D20EVSE_HPP
+#endif // EVSED20_HPP
