@@ -108,7 +108,6 @@ active_modules:
     config_module:
       device: auto
       tls_security: allow
-    connections: {}
     module: EvseV2G
     connections:
       security:
