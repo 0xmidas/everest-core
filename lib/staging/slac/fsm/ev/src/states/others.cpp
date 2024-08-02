@@ -22,10 +22,10 @@ void ResetState::enter() {
 FSMSimpleState::HandleEventReturnType ResetState::handle_event(AllocatorType& sa, Event ev) {
     if (ev == Event::TRIGGER_MATCHING) {
         if (ctx.chip_reset.enabled) {
-            // If chip reset is enabled in config, go to ResetChipState and from there to IdleState
+            // If chip reset is enabled in config, go to ResetChipState and from there to InitSlacState
             return sa.create_simple<ResetChipState>(ctx);
         } else {
-            // If chip reset is disabled, go to IdleState directly
+            // If chip reset is disabled, go to InitSlacState directly
             return sa.create_simple<InitSlacState>(ctx);
         }
     } else {
