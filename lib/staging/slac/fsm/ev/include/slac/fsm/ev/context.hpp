@@ -92,7 +92,7 @@ struct ContextCallbacks {
 };
 
 struct Context {
-    explicit Context(const ContextCallbacks& callbacks_) : callbacks(callbacks_) {};
+    explicit Context(const ContextCallbacks& callbacks_) : callbacks(callbacks_){};
 
     // MAC address of our PLC modem (EV side)
     uint8_t plc_mac[ETH_ALEN] = {0x00, 0xB0, 0x52, 0x00, 0x00, 0x01};
