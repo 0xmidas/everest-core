@@ -2,6 +2,7 @@
 // Copyright 2023 - 2023 Pionix GmbH and Contributors to EVerest
 #include <slac/fsm/ev/states/others.hpp>
 
+#include <chrono>
 #include <cstring>
 #include <random>
 #include <thread>
@@ -121,7 +122,8 @@ FSMSimpleState::HandleEventReturnType InitSlacState::handle_event(AllocatorType&
 void InitSlacState::enter() {
 
     if (ctx.chip_reset.enabled == true and ctx.modem_vendor == ModemVendor::Lumissil) {
-        std::this_thread::sleep_for(10s); // FIXME we need to find out when Lumissil is ready after reset
+        std::this_thread::sleep_for(
+            std::chrono::seconds(10)); // FIXME we need to find out when Lumissil is ready after reset
     }
 
     ctx.log_info("Entered init state");
